@@ -1,0 +1,5 @@
+CREATE 
+DATABASE 
+mydatabase_a31;
+
+DROP DATABASE IF EXISTS mydatabase;
