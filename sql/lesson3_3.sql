@@ -34,4 +34,12 @@ SELECT id as 序號,code as 代碼, name as 車站名稱, e_name as 英文名稱
 FROM stations
 WHERE name LIKE '%港';
 
+SELECT id as 序號,code as 代碼, name as 車站名稱, e_name as 英文名稱
+FROM stations
+WHERE id <= 10;
+
+SELECT id as 序號,code as 代碼, name as 車站名稱, e_name as 英文名稱
+FROM stations
+WHERE id <= 20 AND id >= 10;
+
 
