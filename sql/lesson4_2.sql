@@ -8,3 +8,20 @@ CREATE TABLE IF NOT EXISTS stations(
 	gps VARCHAR(30),
 	haveBike BOOLEAN
 );
+
+SELECT *
+FROM stations;
+
+CREATE TABLE IF NOT EXISTS station_in_out(
+	date DATE,
+	staCode VARCHAR(5) NOT NULL,
+	gateInComingCnt INTEGER,
+	gateOutGoingCnt INTEGER,
+	PRIMARY KEY (date,staCode),
+	FOREIGN KEY (staCode) REFERENCES stations(stationCode)
+	ON DELETE SET NULL
+	ON UPDATE CASCADE
+);
+
+SELECT *
+FROM station_in_out;
