@@ -23,3 +23,13 @@ https://youtube.com/live/aS6GG1U0VWk
 ## 2024_10_06_下午
 
 https://youtube.com/live/2MDuohWanzk
+
+---
+
+## 2024_10_13_上午
+
+https://youtube.com/live/_hR_O9GrmsE
+
+## 2024_10_13_下午
+
+https://youtube.com/live/BRrQDI-6K34
