@@ -29,3 +29,5 @@ WHERE first_name like 'A%' and length(first_name)>=3 and length(first_name)<=5;
 SELECT *
 FROM customer
 WHERE first_name like 'Bra%' and last_name!='Motley';
+
+
