@@ -30,3 +30,12 @@ INSERT INTO enrollments (student_id, course_name, grade) VALUES
     (4, '作業系統', 'A-'),
     (5, '網頁設計', 'B+'),
     (5, '資料庫系統', 'A-');
+
+SELECT s.student_id AS 學生編號,
+			   name AS 學生姓名,
+		        age AS AGE,
+		course_name AS 課程名稱,
+		      grade AS 成積
+FROM enrollments e join students s
+				 on e.student_id = s.student_id
+WHERE name='張小明';
