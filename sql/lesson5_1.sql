@@ -77,3 +77,6 @@ SELECT stationname AS 站名,MAX(gateincomingcnt) AS 最多人數
 FROM stations JOIN station_in_out ON stationcode = stacode
 GROUP BY 站名;
 
+
+SELECT version();
+
