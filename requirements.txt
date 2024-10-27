@@ -1,2 +1,6 @@
 psycopg2-binary
 streamlit
+pandas
+pandas-datareader
+Pyarrow
+yfinance
