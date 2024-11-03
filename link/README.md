@@ -53,3 +53,11 @@ https://youtube.com/live/6Kq4jE3WQyg
 ## 2024_10_27_下午
 
 https://youtube.com/live/pEhAR6t7cF8
+
+## 2024_11_03_上午
+
+https://youtube.com/live/giOk5K7EZik
+
+## 2024_11_03_下午
+
+https://youtube.com/live/1oNO4gSDMvs
