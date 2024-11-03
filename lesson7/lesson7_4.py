@@ -17,5 +17,6 @@ conn.close()
 st.title('世界大盤分析')
 with st.sidebar:
     st.title('請選擇股票市場:')
-    st.write('## 台灣')
-    st.write(all_country)
+    input_dict = dict(all_country)
+    options = st.multiselect("請選擇",input_dict.values(),default='台灣',placeholder="請選擇市場",label_visibility='hidden')
+    st.write(options)
