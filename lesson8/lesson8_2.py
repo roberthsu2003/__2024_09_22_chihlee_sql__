@@ -60,5 +60,5 @@ with st.sidebar:
 
 df = pd.DataFrame(getData((default_country,)),columns=['國家','代號','日期','收盤價','成交量'])
 df['收盤價'] = df['收盤價'].astype('float').round(decimals=2)
-df
+st.line_chart(data=df,x='日期',y='收盤價',color='國家')
     
