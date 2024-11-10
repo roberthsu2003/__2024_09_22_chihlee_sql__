@@ -61,3 +61,12 @@ https://youtube.com/live/giOk5K7EZik
 ## 2024_11_03_下午
 
 https://youtube.com/live/1oNO4gSDMvs
+
+
+## 2024_11_10_上午
+
+https://youtube.com/live/87M5N9gnXtQ
+
+## 2024_11_10_下午
+
+https://youtube.com/live/tqEKDFTQbI8
