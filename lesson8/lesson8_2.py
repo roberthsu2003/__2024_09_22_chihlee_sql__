@@ -5,8 +5,30 @@ import os
 load_dotenv()
 
 @st.cache_resource
+def getData():
+    conn = psycopg2.connect(host=os.environ['POSTGRE_HOST'],
+                            database=os.environ['POSTGRE_DATABASE'],
+                            user=os.environ['POSTGRE_USER'],
+                            password=os.environ['POSTGRE_PASSWORD'])
+    with conn:
+        with conn.cursor() as cursor:
+            sql = '''
+            SELECT country,市場.name,date,adj_close,volume
+            FROM 股市 JOIN 市場 ON 股市.name = 市場.name
+            WHERE country = '台灣';
+            '''
+            cursor.execute(sql)
+            all_data = cursor.fetchall()
+    conn.close()
+    return all_data
+
+
+@st.cache_resource
 def get_country():
-    conn = psycopg2.connect(host=os.environ['POSTGRE_HOST'],database=os.environ['POSTGRE_DATABASE'],user=os.environ['POSTGRE_USER'],password=os.environ['POSTGRE_PASSWORD'])
+    conn = psycopg2.connect(host=os.environ['POSTGRE_HOST'],
+                            database=os.environ['POSTGRE_DATABASE'],
+                            user=os.environ['POSTGRE_USER'],
+                            password=os.environ['POSTGRE_PASSWORD'])
     with conn:
         with conn.cursor() as cursor:
             sql = '''
@@ -22,6 +44,7 @@ def user_select():
     print('使用者選擇了')
     print(st.session_state.stocks)
 
+print(getData())
 
 st.title('世界大盤分析')
 with st.sidebar:
