@@ -43,7 +43,10 @@ def get_country():
 
 def user_select():
     print('使用者選擇了')
-    print(st.session_state.stocks)
+    selectedCountry:tuple[str] = tuple(st.session_state.stocks)    
+    df = pd.DataFrame(getData(selectedCountry),columns=['國家','代號','日期','收盤價','成交量'])
+    df['收盤價'] = df['收盤價'].astype('float').round(decimals=2)
+    st.line_chart(data=df,x='日期',y='收盤價',color='國家')
 
 st.title('世界大盤分析')
 default_country = '台灣'
@@ -55,9 +58,9 @@ with st.sidebar:
                     label_visibility='hidden',
                     key='stocks',
                     on_change=user_select)
-    st.write(default_country)
+    
 
-df = pd.DataFrame(getData((default_country,)),columns=['國家','代號','日期','收盤價','成交量'])
-df['收盤價'] = df['收盤價'].astype('float').round(decimals=2)
-st.line_chart(data=df,x='日期',y='收盤價',color='國家')
+
+
+
     
