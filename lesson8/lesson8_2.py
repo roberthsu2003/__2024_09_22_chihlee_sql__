@@ -2,10 +2,11 @@ import streamlit as st
 import psycopg2
 from dotenv import load_dotenv
 import os
+import pandas as pd
 load_dotenv()
 
 @st.cache_resource
-def getData():
+def getData(country:tuple[str])->list[tuple]:
     conn = psycopg2.connect(host=os.environ['POSTGRE_HOST'],
                             database=os.environ['POSTGRE_DATABASE'],
                             user=os.environ['POSTGRE_USER'],
@@ -15,9 +16,9 @@ def getData():
             sql = '''
             SELECT country,市場.name,date,adj_close,volume
             FROM 股市 JOIN 市場 ON 股市.name = 市場.name
-            WHERE country = '台灣';
+            WHERE country IN %s;
             '''
-            cursor.execute(sql)
+            cursor.execute(sql,(country,))
             all_data = cursor.fetchall()
     conn.close()
     return all_data
@@ -44,11 +45,9 @@ def user_select():
     print('使用者選擇了')
     print(st.session_state.stocks)
 
-print(getData())
-
 st.title('世界大盤分析')
-with st.sidebar:
-    default_country = '台灣'
+default_country = '台灣'
+with st.sidebar:    
     st.title('請選擇股票市場:')
     
     st.multiselect("請選擇",get_country(),
@@ -58,4 +57,8 @@ with st.sidebar:
                     key='stocks',
                     on_change=user_select)
     st.write(default_country)
+
+df = pd.DataFrame(getData((default_country,)),columns=['國家','代號','日期','收盤價','成交量'])
+df['收盤價'] = df['收盤價'].astype('float').round(decimals=2)
+df
     
