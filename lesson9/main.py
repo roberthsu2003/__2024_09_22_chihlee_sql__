@@ -1,7 +1,7 @@
 
 from dotenv import load_dotenv
 import streamlit as st
-from time import sleep
+from pprint import pprint
 from tools import get_data
 load_dotenv()
 
@@ -12,9 +12,12 @@ def alert():
         st.stop()
 
 with st.spinner('下載資料中...'):
-        get_data()
-alert()
-st.write('顯示頁面')
+        youbikes = get_data()
+        
+if youbikes is None:
+    alert()
+st.write(youbikes)
+
 
 
     
