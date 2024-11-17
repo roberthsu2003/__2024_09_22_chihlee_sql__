@@ -1,3 +1,5 @@
 streamlit
 python-dotenv==1.0.1
 psycopg2-binary
+requests==2.32.3
+rich
