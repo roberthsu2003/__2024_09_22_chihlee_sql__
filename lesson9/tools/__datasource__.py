@@ -20,3 +20,7 @@ def get_data()->list | None:
         return None
     else:
         return response.json()
+    
+def save_to_database(data:list[dict])->None:
+    print(data)
+    print("data的資料要放進資料庫")
