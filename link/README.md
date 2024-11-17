@@ -70,3 +70,11 @@ https://youtube.com/live/87M5N9gnXtQ
 ## 2024_11_10_下午
 
 https://youtube.com/live/tqEKDFTQbI8
+
+## 2024_11_17_上午
+
+https://youtube.com/live/n-9pIJMvp58
+
+## 2024_11_17_下午
+
+https://youtube.com/live/RVBDENCC8gM
