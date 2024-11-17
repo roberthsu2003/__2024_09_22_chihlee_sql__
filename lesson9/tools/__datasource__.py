@@ -92,3 +92,40 @@ def save_to_database(data:list[dict])->None:
 
 
     conn.close()
+
+def get_sarea_from_database()->list[tuple]:
+    load_dotenv()
+    conn = psycopg2.connect(host=os.environ['POSTGRE_HOST'],database=os.environ['POSTGRE_DATABASE'],user=os.environ['POSTGRE_USER'],password=os.environ['POSTGRE_PASSWORD'])
+    with conn:
+        with conn.cursor() as cursor:
+            sql = '''
+                SELECT 行政區
+                FROM 站點資訊
+                GROUP BY 行政區;
+            '''
+            cursor.execute(sql)
+            areas = cursor.fetchall()
+            return areas
+            
+    conn.close()
+
+def get_info_area(area:str)->list[tuple]:
+    load_dotenv()
+    conn = psycopg2.connect(host=os.environ['POSTGRE_HOST'],database=os.environ['POSTGRE_DATABASE'],user=os.environ['POSTGRE_USER'],password=os.environ['POSTGRE_PASSWORD'])
+    with conn:
+        with conn.cursor() as cursor:
+            sql = '''
+                SELECT 日期,站點資訊.站點名稱,行政區,站點地址,lat,lng,總車輛,可借,可還,可借,活動
+                FROM youbike
+                JOIN 站點資訊 ON youbike.編號 = 站點資訊.站點編號
+                WHERE (日期,編號) IN (
+                    SELECT MAX(日期),編號
+                    FROM youbike
+                    GROUP BY 編號
+                ) AND 行政區 = %s;
+            '''
+            cursor.execute(sql,(area,))
+            area_info = cursor.fetchall()
+            return area_info
+            
+    conn.close()
